@@ -86,6 +86,27 @@ nav.white {
   transition:0.5s;
 }
 
+.profile-norm{
+  font-size: 13pt;
+}
+
+.profile-norm a {
+  color: black;
+  -o-transition:0.5s;
+  -ms-transition:0.5s;
+  -moz-transition:0.5s;
+  -webkit-transition:0.5s;
+  transition:0.5s;
+}
+.profile-norm a:hover {
+  color: black;
+  -o-transition:0.5s;
+  -ms-transition:0.5s;
+  -moz-transition:0.5s;
+  -webkit-transition:0.5s;
+  transition:0.5s;
+}
+
 .profile-block {
     background-color: #fff;
     transition: box-shadow .25s;
@@ -112,6 +133,28 @@ nav.white {
   font-weight: bold;
 
   font-family: Palatino Linotype, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.profile-link-cv{
+  font-size: 25pt;
+  font-weight: bold;
+}
+
+.profile-link-cv a {
+  color: white;
+  -o-transition:0.5s;
+  -ms-transition:0.5s;
+  -moz-transition:0.5s;
+  -webkit-transition:0.5s;
+  transition:0.5s;
+}
+.profile-link-cv a:hover {
+  color: #08575c;
+  -o-transition:0.5s;
+  -ms-transition:0.5s;
+  -moz-transition:0.5s;
+  -webkit-transition:0.5s;
+  transition:0.5s;
 }
 
 .about-card{
@@ -240,7 +283,7 @@ a:hover{
 
 .publication-hr{
   border: 0;
-  border-top: 1px solid #DDDDDD;
+  border-top: 2px solid #DDDDDD;
 }
 
 /* -----------------------------------------------
