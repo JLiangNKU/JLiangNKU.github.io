@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://cs.stanford.edu/people/karpathy/densecap/ -->
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inferring and Executing Programs for Visual Reasoning</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="feifei_files/bootstrap.css">
+    <link rel="stylesheet" href="feifei_files/bootstrap-theme.css">
+
+    <!-- Google fonts -->
+    <link href="feifei_files/google-fonts.css" rel="stylesheet" type="text/css">
+
+    <!-- Google Analytics -->
+    <link rel="stylesheet" type="text/css" href="feifei_files/style.css">
+
+  <script async="" src="feifei_files/analytics.js"></script><script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-50623594-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  </head>
+
+
+<body>
+<div class="container-fluid">
+  
+<div class="row">
+  <div class="col-xs-1 text-center">
+    <a href="http://vision.stanford.edu/">
+      <img src="feifei_files/visionlablogo.png" class="img-logo">
+    </a>
+    <br>
+    <a href="http://stanford.edu/">
+      <img src="feifei_files/stanfordlogo.jpg" class="img-logo">
+    </a>
+  </div>
+  <div class="col-xs-10 text-center">
+    <h1>Inferring and Executing Programs for Visual Reasoning</h1>
+  </div>
+  <div class="col-xs-1 center-block">
+    <img src="feifei_files/facebook_logo.png" class="img-logo">
+    <br>
+    <a href="https://research.fb.com/category/facebook-ai-research-fair/">
+      <img src="feifei_files/fair_logo.png" class="img-logo">
+    </a>
+  </div>
+</div>
+
+<div class="row section highlight">
+  <div class="col-xs-8 col-xs-offset-2 text-justify">
+  <h2>Abstract</h2>
+    Existing methods for visual reasoning attempt to directly map inputs to
+    outputs using black-box architectures without explicitly modeling the
+    underlying reasoning processes. As a result, these black-box models often
+    learn to exploit biases in the data rather than learning to perform visual
+    reasoning. Inspired by module networks, this paper proposes a model for
+    visual reasoning that consists of a <b>program generator</b> that constructs an
+    explicit representation of the reasoning process to be performed, and an
+    <b>execution engine</b> that executes the resulting program to produce an answer.
+    Both the program generator and the execution engine are implemented by
+    neural networks, and are trained using a combination of backpropagation and
+    REINFORCE. Using the CLEVR benchmark for visual reasoning, we show that our
+    model significantly outperforms strong baselines and generalizes better in
+    a variety of settings.
+  </div>
+</div>
+
+<div class="row section">
+  <div class="col-xs-6 text-center">
+    <div class="row text-center">
+      <div class="col-xs-3">
+        <a href="http://cs.stanford.edu/people/jcjohns/">
+          <img src="feifei_files/me-v2.jpg" class="img-circle img-responsive">
+          Justin <br> Johnson
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a href="http://home.bharathh.info/">
+          <img src="feifei_files/bharath-hariharan.jpeg" class="img-circle img-responsive">
+          Bharath <br> Hariharan
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a href="https://lvdmaaten.github.io/">
+          <img src="feifei_files/laurens-van-der-maaten.jpg" class="img-circle img-responsive">
+          Laurens van <br> der Maaten
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <a href="https://cs.stanford.edu/~jhoffman/">
+          <img src="feifei_files/judy.jpg" class="img-circle img-responsive">
+            Judy Hoffman
+          
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a href="http://vision.stanford.edu/feifeili/">
+          <img src="feifei_files/feifei2.jpeg" class="img-circle img-responsive">
+          Fei-Fei Li
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a href="http://larryzitnick.org/">
+          <img src="feifei_files/larry-zitnick.jpg" class="img-circle img-responsive">
+          Larry Zitnick
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a href="http://www.rossgirshick.info/">
+          <img src="feifei_files/ross-girshick.jpeg" class="img-circle img-responsive">
+          Ross Girshick
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 text-center">
+    <a href="https://arxiv.org/pdf/1705.03633.pdf">
+      <img src="feifei_files/iep-paper.png" class="img-responsive">
+      Download paper (arXiv)
+    </a>
+  </div>
+</div>
+
+<div class="row section text-center" style="color:#900">
+  <h4>To appear at ICCV 2017 (Oral)</h4>
+</div>
+
+<div class="row section highlight">
+  <div class="col-xs-5 col-xs-offset-1">
+    <h2>Method</h2>
+    Our model consists of two components:
+    <div style="margin-top:10px">
+        The <b>program generator</b> reads the text of the question
+        and outputs a program that can be executed to answer the question.
+        The program generator is is implemented as LSTM sequence-to-sequence
+        model.
+    </div>
+    <div style="margin-top:10px">
+        The <b>execution engine</b> executes programs on images to answer
+        questions, implemented as a neural module network [1]. It learns a separate
+        <b>module</b> for each basic function; these modules are assembled according
+        to the predicted program, giving a customized neural network
+        architecture for each question.
+    </div>
+    <div>
+      <h3>Code</h3>
+      Our code is available <a href="https://github.com/facebookresearch/clevr-iep">on GitHub</a>.
+      We provide <a href="https://github.com/facebookresearch/clevr-iep#pretrained-models">pretrained models</a>
+      used in the paper as well as instructions for
+      <a href="https://github.com/facebookresearch/clevr-iep/blob/master/TRAINING.md">training new models</a>.
+    </div>
+    <div style="margin-top:10px;font-size:12px">
+      <a href="https://arxiv.org/abs/1511.02799">
+        [1] Andreas et al, <i>Neural Module Networks</i>, CVPR 2016
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-5">
+    <img src="feifei_files/system.svg" class="img-responsive">
+  </div>
+</div>
+
+<div class="row section">
+  <div class="col-xs-4 col-xs-offset-1">
+    <h2>CLEVR-Humans Dataset</h2>
+    We collected a dataset of questions about CLEVR images written by people on
+    Amazon's Mechanical Turk.
+    <p class="pad-top">
+    In the paper we use this dataset to show that our
+    model can generalize from the synthetic langauge of the CLEVR dataset to
+    questions using freeform natural language.
+    </p><p class="pad-top">
+    The dataset consists of:
+    </p><ul>
+      <li>A <b>training</b> set of 17,817 questions</li>
+      <li>A <b>validation</b> set of 7,202 questions</li>
+      <li>A <b>test</b> set of 7,145 questions</li>
+    </ul>
+    <h4><a href="https://cs.stanford.edu/people/jcjohns/iep/CLEVR-Humans.zip">Download CLEVR-Humans (588 KB)</a></h4>
+    Images for CLEVR-Humans are available in the
+    <a href="https://cs.stanford.edu/people/jcjohns/clevr">CLEVR Dataset</a>.
+    <div class="row">
+      <div class="col-xs-12" style="margin-top:20px;font-size:10px">
+        All data licensed under the
+        <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons CC BY 4.0</a> license.
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div class="row">
+      <div class="col-xs-6">
+        <img src="feifei_files/CLEVR_val_001539.png" class="img-responsive">
+        <b>Q:</b>
+        What shape is the object reflected in the blue cylinder?
+        <br>
+        <b>A:</b>
+        cube
+      </div>
+      <div class="col-xs-6">
+        <img src="feifei_files/CLEVR_val_002360.png" class="img-responsive">
+        <b>Q:</b>
+        What number of cylinders share the same color?
+        <br>
+        <b>A:</b>
+        2
+      </div>
+    </div>
+    <div class="row pad-top">
+      <div class="col-xs-6">
+        <img src="feifei_files/CLEVR_val_004615.png" class="img-responsive">
+        <b>Q:</b>
+        How many objects are not purple and not metallic?
+        <br>
+        <b>A:</b>
+        2
+      </div>
+      <div class="col-xs-6">
+        <img src="feifei_files/CLEVR_val_003267.png" class="img-responsive">
+        <b>Q:</b>
+        What color is the object partially blocked by the purple cylinder?
+        <br>
+        <b>A:</b>
+        yellow
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+</body></html>
