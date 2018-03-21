@@ -4,7 +4,7 @@
 <html class="js history serviceworker xhr2 canvas cssgradients supports no-touchevents backgroundblendmode objectfit object-fit flexbox flexboxlegacy no-flexboxtweener csstransforms3d csstransitions no-ios no-iphone no-android no-ios-or-android no-safari firefox no-chrome no-chrome_ios no-windows no-osx no-old_ie webkit-text-stroke dm_scroll_transition dm_page_transitions dm_interactive_branding mix_blend_mode no-font_smoothing" style=""><!--<![endif]--><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         
-
+<link rel="shortcut icon" href="blogs_files/poster.png">
 
 <title>应用于语义分割问题的深度学习技术综述</title>
 
@@ -41,59 +41,49 @@
     
       
       
-        <img class="img--object-fit img--object-height" src="blogs_files/Hero20learning20to20play3.png" sizes="(max-width: 768px) 500px, (max-width: 1024px) 1100px, (max-width: 1580px) 1600px, 100vw">
+        <img class="img--object-fit img--object-height" src="blogs_files/background.png" sizes="(max-width: 768px) 500px, (max-width: 1024px) 1100px, (max-width: 1580px) 1600px, 100vw">
       
     
   </div>
   
   <div class="cf container">
     
-      <h1 class="white h2">应用于语义分割问题的深度学习技术综述</h1>
+      <h1 class="white h2">翻译：应用于语义分割问题的深度学习技术综述</h1>
       
     
   </div>
 </header>
 
-  
-      
-      
-      
-        
-
-        
-
-        
-
-          
 
 
-
-<div id="block-0" class="cf container rich-text--research show" data-dm-tmpl="rich-text" data-collapse="no" data-scroll-item="" data-dm-id="959">
-  <div class="g-sm-col-4 g-lg-col-7 g-lg-push-1">
-
-
-    <div class="rich-text">
-<!--<p style="left: 0px; position: absolute; top: 0px;">-->
-
+<table border="0" cellpadding="0" cellspacing="0" width="1200" align="center" bgcolor="#FFFFFF">	  
+<tr>
+<td colspan = 7>
+<p>&nbsp;</p>
+<p><font size="3"><i>原文：<a href="https://arxiv.org/abs/1704.06857">A Review on Deep Learning Techniques Applied to Semantic Segmentation</a></i></font></p>
+<p>&nbsp;</p>
 <p style="text-align:center"><font size="5" color="red"><b>摘要</b></font></p>
-<p><b>计算机视觉与机器学习研究者对图像语义分割问题越来越感兴趣。越来越多的应用场景需要精确且高效的分割技术，如自动驾驶、室内导航、甚至虚拟现实与增强现实等。这个需求与视觉相关的各个领域及应用场景下的深度学习技术的发展相符合，包括语义分割及场景理解等。这篇论文回顾了各种应用场景下利用深度学习技术解决语义分割问题的情况：首先，我们引入了领域相关的术语及必要的背景知识；然后，我们介绍了主要的数据集以及对应的挑战，帮助研究者选取真正适合他们问题需要及目标的数据集；接下来，我们介绍了现有的方法，突出了各自的贡献以及对本领域的积极影响；最后，我们展示了大量的针对所述方法及数据集的实验结果，同时对其进行了分析；我们还指出了一系列的未来工作的发展方向，并给出了我们对于目前最优的应用深度学习技术解决语义分割问题的研究结论。</b></p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计算机视觉与机器学习研究者对图像语义分割问题越来越感兴趣。越来越多的应用场景需要精确且高效的分割技术，如自动驾驶、室内导航、甚至虚拟现实与增强现实等。这个需求与视觉相关的各个领域及应用场景下的深度学习技术的发展相符合，包括语义分割及场景理解等。这篇论文回顾了各种应用场景下利用深度学习技术解决语义分割问题的情况：首先，我们引入了领域相关的术语及必要的背景知识；然后，我们介绍了主要的数据集以及对应的挑战，帮助研究者选取真正适合他们问题需要及目标的数据集；接下来，我们介绍了现有的方法，突出了各自的贡献以及对本领域的积极影响；最后，我们展示了大量的针对所述方法及数据集的实验结果，同时对其进行了分析；我们还指出了一系列的未来工作的发展方向，并给出了我们对于目前最优的应用深度学习技术解决语义分割问题的研究结论。</b></p>
+</td>
+</tr>
 
-<p style="text-align:center"><font size="5" color="red"><b>导言</b></font></p>
-<p>如今，语义分割（应用于静态2D图像、视频甚至3D数据、体数据）是计算机视觉的关键问题之一。在宏观意义上来说，语义分割是为场景理解铺平了道路的一种高层任务。作为计算机视觉的核心问题，场景理解的重要性越来越突出，因为现实中越来越多的应用场景需要从影像中推理出相关的知识或语义（即由具体到抽象的过程）。这些应用包括自动驾驶[1,2,3]，人机交互[4]，计算摄影学[5]，图像搜索引擎[6]，增强现实等。应用各种传统的计算机视觉和机器学习技术，这些问题已经得到了解决。虽然这些方法很流行，但深度学习革命让相关领域发生了翻天覆地的变化，因此，包括语义分割在内的许多计算机视觉问题都开始使用深度架构来解决，通常是卷积神经网络CNN[7-11]，而CNN在准确率甚至效率上都远远超过了传统方法。然而，相比于固有的计算机视觉及机器学习分支，深度学习还远不成熟。也因此，还没有一个统一的工作及对于目前最优方法的综述。该领域的飞速发展使得对初学者的启蒙教育比较困难，而且，由于大量的工作相继被提出，要跟上发展的步伐也非常耗时。于是，追随语义分割相关工作、合理地解释它们的论点、过滤掉低水平的工作以及验证相关实验结果等是非常困难的。</p>
+<tr>
+<td>
+<p>&nbsp;</p>
+<p style="text-align:center"><font size="5" color="red"><b>1 导言</b></font></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如今，语义分割（应用于静态2D图像、视频甚至3D数据、体数据）是计算机视觉的关键问题之一。在宏观意义上来说，语义分割是为场景理解铺平了道路的一种高层任务。作为计算机视觉的核心问题，场景理解的重要性越来越突出，因为现实中越来越多的应用场景需要从影像中推理出相关的知识或语义（即由具体到抽象的过程）。这些应用包括自动驾驶[1,2,3]，人机交互[4]，计算摄影学[5]，图像搜索引擎[6]，增强现实等。应用各种传统的计算机视觉和机器学习技术，这些问题已经得到了解决。虽然这些方法很流行，但深度学习革命让相关领域发生了翻天覆地的变化，因此，包括语义分割在内的许多计算机视觉问题都开始使用深度架构来解决，通常是卷积神经网络CNN[7-11]，而CNN在准确率甚至效率上都远远超过了传统方法。然而，相比于固有的计算机视觉及机器学习分支，深度学习还远不成熟。也因此，还没有一个统一的工作及对于目前最优方法的综述。该领域的飞速发展使得对初学者的启蒙教育比较困难，而且，由于大量的工作相继被提出，要跟上发展的步伐也非常耗时。于是，追随语义分割相关工作、合理地解释它们的论点、过滤掉低水平的工作以及验证相关实验结果等是非常困难的。</p>
 
-<p>就我所知，本文是第一篇致力于综述用于语义分割的深度模型技术的文章。已经有较多的关于语义分割的综述调查，比如[12,13]等，这些工作在总结、分类现有方法、讨论数据集及评价指标以及为未来研究者提供设计思路等方面做了很好的工作。但是，这些文章缺少对某些最新数据集的介绍，他们不去分析框架的情况，而且没有提供深度学习技术的细节。因此，我们认为本文是全新的工作，而且这对于深度学习相关的语义分割社区有着重要意义。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就我所知，本文是第一篇致力于综述用于语义分割的深度模型技术的文章。已经有较多的关于语义分割的综述调查，比如[12,13]等，这些工作在总结、分类现有方法、讨论数据集及评价指标以及为未来研究者提供设计思路等方面做了很好的工作。但是，这些文章缺少对某些最新数据集的介绍，他们不去分析框架的情况，而且没有提供深度学习技术的细节。因此，我们认为本文是全新的工作，而且这对于深度学习相关的语义分割社区有着重要意义。</p>
+</td>
+</tr>
 
 
-  </div>
-</div>
-
-
-
-    
+<tr>  
+<td> 
     <section id="block-1" class="section--block block-context--research show" data-dm-tmpl="gif" data-scroll-item="" data-dm-id="960">
 
             <div class="g-lg-col-8 g-lg-push-2 g-md-col-6 g-sm-col-4">
-                    <div class="image--container"  style="text-align:left">
+                    <div class="image--container"  style="text-align:center">
                       
                         <img src="blogs_files/1.png">
 
@@ -103,239 +93,31 @@
             </div>
 
     </section>
-    
-
-  
-
-<!--
-
-<section class="article-metadata show" data-dm-tmpl="article-metadata" data-scroll-item="">
-  <div class="container cf">
-    <div class="g-lg-push-2 g-lg-col-9 g-md-col-6 g-sm-col-4">
-      <footer>
-        <div class="article-metadata--content">
-          <header>
-            
-              <div class="p--meta grey-mid-light">Authors</div>
-            
-            <time class="p--meta grey-mid-light" datetime="2018-02-28T12:00:00+00:00">
-              Wednesday, 28 February 2018
-            </time>
-          </header>
-
-          
-            <ul class="author-list cf">
-            
-              <li>
-                <div class="author--image">
-                  <div class="img-holder img-holder--1-1 img-holder--research">
-                    
-                  </div>
-                </div>
-                <p class="p--meta">
-                  
-                    <span class="grey-mid">Martin Riedmiller</span><br>
-                  
-                  
-                    <span class="grey-mid-light">Research Scientist, DeepMind</span>
-                  
-                </p>
-              </li>
-            
-              <li>
-                <div class="author--image">
-                  <div class="img-holder img-holder--1-1 img-holder--research">
-                    
-                  </div>
-                </div>
-                <p class="p--meta">
-                  
-                    <span class="grey-mid">Roland Hafner</span><br>
-                  
-                  
-                    <span class="grey-mid-light">Research Scientist, DeepMind</span>
-                  
-                </p>
-              </li>
-            
-            </ul>
-          
-        </div>
-
-        
-      </footer>
-    </div>
-  </div>
-</section>
+<td>
+</tr>
 
 
-</div></main>
-          <div class="nav-mask"></div>
-          <section class="search fixed top-0 right-0 bottom-0 left-0" data-dm-tmpl="search">
-  <div class="cf container relative h100">
-    <section class="search--input-wrapper relative">
-      <div class="g-md-col-1 g-lg-col-1 search--mega-icon">
-        <svg class="icon icon-search icon-search-large">
-          <use xlink:href="#search_large"></use>
-        </svg>
-      </div>
-      <input class="g-sm-col-4 g-md-col-5 g-lg-col-11 search--mega-input" name="search" placeholder="Search DeepMind" data-search-input="" type="search">
-      <span class="p--meta grey-mid uppercase absolute right-0" data-total-results="" data-scroll-item=""></span>
-    </section>
-    <section class="search--input-wrapper search--input-wrapper--sticky">
-      <div class="g-md-col-1 g-lg-col-1 search--mega-icon">
-        <svg class="icon icon-search icon-search-large">
-          <use xlink:href="#search_large"></use>
-        </svg>
-      </div>
-      <input class="g-sm-col-4 g-md-col-5 g-lg-col-11 search--mega-input" name="search" placeholder="Search DeepMind" data-search-input="" type="search">
-    </section>
-    <div class="search--results-wrapper" data-results-wrap=""></div>
-    <div class="g-sm-col-4 text-center search--results-btn-wrap">
-      <a class="btn" href="#" data-results-page-btn="">Show all results</a>
-    </div>
-    <button class="top-0 right-0 black" data-close-btn="">
-      <svg class="icon icon-close">
-        <title>close</title>
-        <use xlink:href="#close"></use>
-      </svg>
-    </button>
-  </div>
-</section>
+<tr>
+<td>
+<p>&nbsp;</p>
+<p>本文核心贡献如下：<br />1）我们对于现有的数据集给出了一个全面的调查，这些数据集将会对深度学习技术推动的分割项目发挥作用；<br />2）我们对于多数重要的深度学习语义分割方法进行了深度有条理的综述，包括他们的起源、贡献等；<br />3）我们进行了彻底的性能评估，使用了多种评价指标如准确率、运行时间、内存占用等；<br />4）我们对以上结果进行了讨论，并给出了未来工作的一系列可能的发展方向，这些方向可能在未来的发展进程中取得优势。我们还给出了该领域目前最好方法的总结。</p>
 
-          
+<p>本文剩余部分安排：<br />第二章介绍了语义分割问题，同时引入了相关工作中常用的符号、惯例等。其他的背景概念如通用的深度神经网络也在这章中回顾；<br />第三章介绍了现有的数据集、挑战及实验基准；<br />第四章回顾了现有方法，基于其贡献自下而上排序。本章重点关注这些方法的理论及闪光点，而不是给出一个定量的评估；<br />第五章给出了一个简短的对于现有方法在给定数据集上定量表现的讨论，另外还有未来相关工作的发展方向；<br />第六章则总结全文并对相关工作及该领域目前最优方法进行了总结。</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<p>&nbsp;</p>
+<p style="text-align:center"><font size="5" color="red"><b>2 术语及背景概念</b></font></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了更好地理解语义分割问题是如何用深度学习框架解决的，有必要了解到其实基于深度学习的语义分割并不是一个孤立的领域，而是在从粗糙推理到精细化推理过程中很自然的一步。这可以追溯到分类问题，包括对整个输入做出预测，即预测哪个物体是属于这幅图像的，或者给出多个物体可能性的排序。对于细粒度推理来说，将接下来进行物体的定位与检测，这将不止提供物体的类别，而且提供关于各类别空间位置的额外信息，比如中心点或者边框。这样很显然，语义分割是实现细粒度推理的很自然的一步，它的目标是：对每个像素点进行密集的预测，这样每个像素点均被标注上期对应物体或区域的类别。这还可以进一步改进，比如实例分割（即对同一类的不同实例标以不同的标签），甚至是基于部分的分割（即对已经分出不同类别的图像进行底层分解，找到每个类对应的组成成分）。图1展示了以上提到的演变过程。在本文中，我们主要关注一般的场景标注，也就是像素级别的分割，但是我们也会回顾实例分割及基于部分的分割的较重要的方法。</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后，像素级别的标注问题可以松弛为以下公式：对于随机变量集合 中的每个随机变量，找到一种方法为其指派一个来自标签空间 中的一个状态。每个标签 表示唯一的一个类或者物体，比如飞机、汽车、交通标志或背景等。这个标签空间有 个可能的状态，通常会被扩展为  +1个，即视 为背景或者空的类。通常， 是一个二维的图像，包含W*H=N的像素点x。但是，这个随机变量的集合可以被扩展到任意维度，比如体数据或者超谱图像。</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除了问题的定义，回顾一些可能帮助读者理解的背景概念也是必要的。首先是一些常见的被用作深度语义分割系统的网络、方法以及设计决策；另外还有用于训练的一些常见的技术比如迁移学习等。最后是数据的预处理以及增强式的方法等。</p>
+</td>
+</tr>
 
 
-
-
-<footer class="footer bg-grey-light" role="contentinfo">
-  <section class="cf container">
-    <header class="g-sm-col-4 g-lg-col-10 g-lg-push-1">
-      <h1 class="left logo">
-        <a href="https://deepmind.com/">
-          
-            <img src="blogs_files/deepmind_logo.png" srcset="/static/v0.0.0/images/deepmind_logo.png 1x, /static/v0.0.0/images/deepmind_logo@2x.png 2x" alt="Deepmind logo">
-          
-        </a>
-      </h1>
-      
-      <div class="right social-items footer--social-items">
-        <p class="left grey-mid p--meta">
-          Follow
-        </p>
-        <ul class="left unstyled">
-          
-          <li class="left social-item">
-            <a href="https://twitter.com/deepmindai" target="_blank">
-              <svg class="icon icon-twitter icon-grey-mid">
-                <title>twitter</title>
-                <use xlink:href="#twitter"></use>
-              </svg>
-            </a>
-          </li>
-          
-          <li class="left social-item">
-            <a href="https://www.youtube.com/channel/UCP7jMXSY2xbc3KCAE0MHQ-A" target="_blank">
-              <svg class="icon icon-youtube icon-grey-mid">
-                <title>youtube</title>
-                <use xlink:href="#youtube"></use>
-              </svg>
-            </a>
-          </li>
-          
-          <li class="left social-item">
-            <a href="https://plus.google.com/+deepmindai" target="_blank">
-              <svg class="icon icon-googleplus icon-grey-mid">
-                <title>googleplus</title>
-                <use xlink:href="#googleplus"></use>
-              </svg>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </header>
-    <nav class="g-sm-col-4 g-md-col-3 g-lg-col-4 g-lg-push-1">
-      <ul class="cf unstyled footer--nav-list">
-        
-        <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-          <a class="no-underline grey-dark p--module" href="https://deepmind.com/research/">Research</a>
-          <a class="faux-link-block--link" href="https://deepmind.com/research/">Research</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-          <a class="no-underline grey-dark p--module" href="https://deepmind.com/applied/">Applied</a>
-          <a class="faux-link-block--link" href="https://deepmind.com/applied/">Applied</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-          <a class="no-underline grey-dark p--module" href="https://deepmind.com/blog/">News &amp; Blog</a>
-          <a class="faux-link-block--link" href="https://deepmind.com/blog/">News &amp; Blog</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-          <a class="no-underline grey-dark p--module" href="https://deepmind.com/about/">About Us</a>
-          <a class="faux-link-block--link" href="https://deepmind.com/about/">About Us</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item faux-link-block">
-          <a class="no-underline grey-dark p--module" href="https://deepmind.com/careers/">Careers</a>
-          <a class="faux-link-block--link" href="https://deepmind.com/careers/">Careers</a>
-        </li>
-        
-      </ul>
-    </nav>
-    <div class="g-sm-col-4 g-md-col-2 g-lg-col-5 right">
-      <ul class="cf unstyled footer--nav-list">
-        
-        <li class="g-sm-col-4 footer--nav-list--item-secondary">
-          <a class="no-underline grey-mid p--module" href="https://deepmind.com/press/">Press</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item-secondary">
-          <a class="no-underline grey-mid p--module" href="https://deepmind.com/terms-and-conditions/">Terms and Conditions</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item-secondary">
-          <a class="no-underline grey-mid p--module" href="https://deepmind.com/privacy-policy/">Privacy Policy –&nbsp;Updated</a>
-        </li>
-        
-        <li class="g-sm-col-4 footer--nav-list--item-secondary">
-          <a class="no-underline grey-mid p--module" href="https://abc.xyz/">Alphabet Inc</a>
-        </li>
-        
-      </ul>
-      <p class="grey-mid-light p--module">© 2018 DeepMind Technologies Limited</p>
-    </div>
-  </section>
-</footer>
-
-        </div>
-
-        
-
-
-<section class="cookie-banner is-active" data-dm-tmpl="cookie-banner" data-last-updated="1489766160">
-	<div class="container cf">
-		<div class="rich-text"><p>DeepMind.com uses cookies to help give you the best possible user experience. <a href="https://deepmind.com/privacy-policy/">Find Out More</a>.</p></div>
-		<div data-close="">
-			<svg class="icon icon-close">
-				<title>close</title>
-				<use xlink:href="#close"></use>
-			</svg>
-		</div>
-	</div>
-</section>
-
-        
-        <script type="text/javascript" src="blogs_files/main-6e5d5787d6.js" defer="defer"></script>
-
-        
-            
-      -->  
-
-
-    
 
 <div class="js-mediaqueries"></div></body></html>
