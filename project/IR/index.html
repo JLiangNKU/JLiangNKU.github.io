@@ -37,26 +37,32 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#homeHeading">Home</a>
             </li>
-            
-<!--
-	     <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#projects">Projects and Publications</a>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Abstract</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#team">Team</a>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#methods">Methodology</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#updates">Updates and Impact</a>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#results">Results</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#contact">Contact</a>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#codes">Codes</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="http://crowdresearchinitiative.stanford.edu/#partners">Partners</a>
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#authors">Authors</a>
             </li>
--->
+
+              <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
             
           </ul>
         </div>
@@ -70,9 +76,11 @@
           <hr>
             <h4><b><font color="orange"> <a href="http://cv.nankai.edu.cn" target="_blank"><font color="yellow"> Computer Vision Lab</font></a></font> in Nankai University</b></h4><br><br>
             <a class="btn btn-primary btn-xl js-scroll-trigger" target="_blank" href="http://liangjie.xyz/LjHomepageFiles/paper_files/TIP_IR.pdf"><font color="black">Get Our Paper</font></a><br><br>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" target="_blank" href=""><font color="black">Get Our Codes</font></a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" target="_blank" href="#codes"><font color="black">Get Our Codes</font></a>
             <p></p>
-            <p><font color="#fffafa"> Please kindly <a href="" target="_blank"><font color="yellow"> cite our work</font></a> if it is helpful.</font></p>
+            <!--<p><font color="#fffafa"> Please kindly <a class="nav-link js-scroll-trigger" href="#cite"><font color="yellow"> cite our work</font></a> if it is helpful.</font></p>-->
+
+            <p><a class="nav-link js-scroll-trigger" href="#cite"><font color="yellow"> cite our work</font></a></p>
 
             <img class="paperimage img img-responsive" src="Dynamic Match Kernel_files/paper_images/page1.jpg" width="110" >
             <img class="paperimage img img-responsive" src="Dynamic Match Kernel_files/paper_images/page2.jpg" width="110" >
@@ -93,7 +101,6 @@
       </div>
 
     </header>
-
 
 
     <div class="call-to-action bg-dark" id="about">
@@ -164,7 +171,7 @@
         <br><br>
       <hr>
 
-    <section id="partners">
+    <section id="para">
       <div class="container">
 
           <center><h2 class="section-heading"><b>Parameters</b></h2></center>
@@ -180,17 +187,40 @@
       </div>
     </section>
 
-          <section id="codes">
+    <section id="codes">
       <div class="container">
 
           <center><h2 class="section-heading"><b>Codes</b></h2></center>
-          <hr class="primary"> <br>
+          <hr class="primary">
 
+          <hr class="light">
+          <p class=""><b><font size="5px" color="red">Baseline System</font> </b></p>
+
+          <p>We construct our baseline method mainly based on <a href="http://www.liangzheng.com.cn/Project/project_baseline.html" target="_blank">THIS</a>
+              informative tutorial with source codes from <a href="http://www.liangzheng.com.cn/" target="_blank">Prof. Liang Zheng</a> (Many thanks).</p>
+
+          <p>Here, we would like to give a brief summary of the baseline method in five steps.</p>
+
+          <div class="row">
+            <ul>
+	            <li>
+                    <b>Feature Extraction</b>
+                </li>
+            </ul>
+          </div>
+
+
+          <p class=""><b><font size="5px" color="red">Implementation of Dynamic Match Kernel</font> </b></p>
+
+          <p>One can find the key implementation of this paper with detailed explanations in
+              <a href="https://github.com/JLiangNKU/Dynamic-match-kernel-for-image-retrieval" target="_blank">Github</a>,
+              and can find a part of the intermediate results in <a href="" target="_blank">Google Drive</a> or <a href="" target="_blank">Baidu Pan</a>.
+          If you use our code or data in your research, please kindly <a href="#cite">cite our paper</a>.</p>
 
       </div>
     </section>
 
-    <div class="call-to-action bg-dark" id="team">
+    <div class="call-to-action bg-dark" id="authors">
       <div class="container text-center">
         <h2>Authors</h2><hr>
         <div class="row">
@@ -251,10 +281,32 @@
 
     <p></p>
 
+  <section id="cite">
+    <div class="container">
+
+    <center><h2 class="section-heading"><b>Cite our paper</b></h2></center>
+    <hr class="primary">
+
+    <hr class="light">
+        <center>
+        <textarea rows="7" cols="75" readonly="true">
+            @ARTICLE{yang2018dynamic,
+                author={J. Yang and J. Liang and H. Shen and K. Wang and P. L. Rosin and M. H. Yang},
+                journal={IEEE Transactions on Image Processing},
+                title={Dynamic Match Kernel with Deep Convolutional Features for Image Retrieval},
+                year={2018},
+                doi={10.1109/TIP.2018.2845136},
+            }
+        </textarea>
+        </center>
+
+    </div>
+  </section>
+
  <div class="call-to-action bg-dark" id="contact">
       <div class="container">
         <center><h2>Contact us!</h2></center><hr>
-          <center>If you have any problems, please send an email to <font color="yellow"> liang27jie@gmail.com</font></center>
+          <center>If you have any problems, feel free to send an email to <font color="yellow"> liang27jie@gmail.com</font></center>
               <!--<div class="row">
                
           <div class="col-lg-2 ml-auto text-center">
